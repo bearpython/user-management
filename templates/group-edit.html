@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+<meta charset="UTF-8">
+<title>欢迎页面-X-admin2.0</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+<link rel="shortcut icon" href="/favicon.ico" type="/static/image/x-icon" />
+<link rel="stylesheet" href="/static/css/font.css">
+<link rel="stylesheet" href="/static/css/xadmin.css">
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/lib/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="/static/js/xadmin.js"></script>
+</head>
+  
+<body>
+    <div class="x-body">
+        <form class="layui-form" method="POST" action="/um/groupedit-{{ obj.uid }}" >
+            <div class="layui-form-item">
+                <label for="username" class="layui-form-label">
+                    <span class="x-red">*</span>用户组ID
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="username" name="groupid" required="" lay-verify="required"
+                    autocomplete="off" class="layui-input" readonly="readonly" value="{{ obj.uid }}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="username" class="layui-form-label">
+                    <span class="x-red">*</span>用户组名称
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="username" name="groupname" required="" lay-verify="required"
+                    autocomplete="off" class="layui-input" value="{{ obj.caption }}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="groupdept" class="layui-form-label">
+                    <span class="x-red">*</span>所属部门
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="username" name="groupdept" required="" lay-verify="required"
+                    autocomplete="off" class="layui-input" value="{{ obj.dept }}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="L_repass" class="layui-form-label">
+                </label>
+                <button id="ajaxForm" class="layui-btn">
+                保存
+                </button>
+            </div>
+        </form>
+    </div>
+    <script src="/static/js/jQuery.form.js"></script>
+    <script>
+        $(function () {
+            //给添加摁扭绑定事件
+            $('#ajaxForm').click(function(){
+                //给form表单绑定提交事件
+                $('form').ajaxSubmit(function () {
+                  alert("保存成功", {icon: 6});
+                  var index = parent.layer.getFrameIndex(window.name);
+                  parent.layer.close(index);
+                 });
+                return false;
+          });
+        });
+    </script>
+</body>
+</html>
